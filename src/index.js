@@ -6,6 +6,7 @@ const inquirer = require('inquirer')
 const fs = require('fs')
 const { log } = require("console")
 
+
 startGetRole = () => {
     inquirer .prompt([
         {
@@ -36,10 +37,9 @@ startGetRole = () => {
 
      
 
-    ])
-.then(function(answer){
-    console.log(answer);
-
+    ]).then(({name,id,email,officeNumber}) => {
+    const manager = new Manager(name,id,email,officeNumber)
+        console.log(manager);
 })
 
 }
