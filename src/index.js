@@ -14,6 +14,25 @@ startGetRole = () => {
             message: 'Enter the managers name'
             // Validate write later
         },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the id number of the manager?'
+            // Validate write later
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the email of the team manager?'
+            // Validate write later
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'What is the office id number of this manager?'
+            // Validate write later
+        },
+        
 
      
 
