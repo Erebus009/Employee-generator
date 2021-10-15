@@ -4,7 +4,7 @@
   # Description
   Taking data from inputs from user generates a html file styled by css showcasing an arrangement of team members.
  ## 
-  ![image](https://user-images.githubusercontent.com/12164234/137562676-8c318a18-bd2f-4ace-b588-5d452caef6d5.png)
+  ![image](https://user-images.githubusercontent.com/12164234/137562676-8c318a18-bd2f-4ace-b588-5d452caef6d5.png )
 
   
   # Licensed Under
