@@ -6,7 +6,7 @@ module.exports = {
   {
     type: "input",
     name: "name",
-    message: "Enter the manager of this project's name",
+    message: "Enter the manager of this project's name: ",
     // Validate write later
   },
   {
@@ -43,8 +43,8 @@ module.exports = {
     name: "officeNumber",
     message: "What is the office id number of this manager?",
     validate: (officeNumber) => {
-      if (officeNumber.length < 6 && !NaN) {
-        return "Manager office number must be more than 5 digits";
+      if (isNaN(officeNumber) || officeNumber.length < 4) {
+        return "Manager office number must be more than 3 digits";
       } else {
         return true;
       }
@@ -152,3 +152,5 @@ next : [
 
 
 }
+
+

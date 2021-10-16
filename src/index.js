@@ -6,12 +6,18 @@ const Intern = require("../lib/Intern");
 const questions = require('./questions')
 const inquirer = require("inquirer");
 const { log } = require("console");
+const generate = require("../lib/generate")
 const fs = require("fs");
 const path = require('path')
 // array to store team members in. 
 const Team = [];
 //--------------------------------------------
 //--------------------------------------------
+// Data to go into html files insaide dist folder.
+const exportPATH = path.resolve(__dirname, "dist")
+const export_dir = path.join(exportPATH, 'generated.html')
+
+
 
 // function to start collection of data to be used in populating the HTML file. 
 function startGetRole() {
@@ -75,13 +81,23 @@ function nextEmployee(){
         engineerAsk();
         break;
       case 'Completed':
+        
         console.log(` Creating HTML file displaying team`);
-        //teamMaker()
+        teamMaker()
     }
   })
 }
+// writes data to html.
+function teamMaker(){
+  fs.writeFile(exportPATH, generate(Team), function(err){
+    if(err){
+      console.log(err);
+    }
 
 
+  
+  })
+}
 
 
 startGetRole();
