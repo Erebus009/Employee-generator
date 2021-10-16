@@ -2,7 +2,7 @@
    
   
   # Description
-  Taking data from inputs from user generates a html file styled by css showcasing an arrangement of team members.
+  Taking data from inputs generates a html file showcasing an arrangement of inputted team members.
 
   
 
