@@ -6,6 +6,13 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const { log } = require("console");
 
+const Team = [];
+
+
+
+
+
+
 startGetRole = () => {
   inquirer
     .prompt([
@@ -17,7 +24,7 @@ startGetRole = () => {
       {
         type: "input",
         name: "name",
-        message: "Enter the managers name",
+        message: "Enter the manager of this project's name",
         // Validate write later
       },
       {
@@ -58,19 +65,19 @@ startGetRole = () => {
     ])
     .then(({ name, id, email, officeNumber }) => {
       const manager = new Manager(name, id, email, officeNumber);
-      console.log(manager);
-      generateTeam();
+      Team.push(manager)
+      addMember();
     });
     
 };
 
-function generateTeam(){
+function addMember(){
     inquirer.prompt([
         { 
             type : "list",
             name : 'class',
-            message: "What role of member do you wish to add?",
-            choices: ["Engineer","Intern","I don't want to add any more team members"]
+            message: "What is the type of team member that you wish to add?",
+            choices: ["Engineer","Intern","I do not wish to add any more team members"]
         }
     ]).then((answers)=> {
         if (answers.class === 'Engineer'){
@@ -83,7 +90,13 @@ function generateTeam(){
                 {
                 type: 'input',
                 name: 'id',
-                message: 'What is the id of the Engineer?'
+                message: 'What is the id of the Engineer?',
+                validate: (id) => { if(isNaN(id) === true ){
+                    return 'Please enter a number'
+                }else {
+                    return true;
+                }
+                }
                 },
                 {
                 type: 'input',
@@ -93,18 +106,63 @@ function generateTeam(){
                 
                 
                 
-            ]).then((name,id,github) => {
+            ]).then(({name,id,github}) => {
                 const engineer = new Engineer(name,id,github);
-                generateTeam();
+                Team.push(engineer)
+                addMember();
             });
         }
         if(answers.class === 'Intern') {
-            return inquirer.prompt([])
+            return inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'name',
+                    message: 'What is the name of the Intern?'
+                    },
+                    {
+                    type: 'input',
+                    name: 'id',
+                    message: 'What is the id of the Intern?',
+                    validate: (id) => { if(isNaN(id) === true ){
+                        return 'Please enter a number'
+                    }else {
+                        return true;
+                    }
+
+                    }
+                    },
+                    {
+                        type: "input",
+                        name: "email",
+                        message: "What is the email of this Intern?",
+                        validate: (email) => {
+                          if ((email = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email))) {
+                            return true;
+                          } else {
+                            return "Please enter a valid email address";
+                          }
+                        },
+                      },
+                    {
+                    type: 'input',
+                    name: 'school',
+                    message: 'What is the current school the Intern is in?'
+                    },
+            ]).then(({name,id,email,school}) => {
+                const intern = new Intern(name,id,email,school)
+                Team.push(intern)
+                addMember();
+
+            });
+    
+    
+    
         }
-    
-    
-    
-    
+        if(answers.class === "I do not wish to add any more team members"){
+            console.log(Team)
+            return 
+
+        }
     })
       
 }
