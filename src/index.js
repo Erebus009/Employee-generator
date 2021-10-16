@@ -3,12 +3,11 @@ const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
+const questions = require('./questions')
 const inquirer = require("inquirer");
-
+const { log } = require("console");
 const fs = require("fs");
 const path = require('path')
-const { log } = require("console");
-const questions = require('./questions')
 // array to store team members in. 
 const Team = [];
 //--------------------------------------------
@@ -31,9 +30,34 @@ function startGetRole() {
       nextEmployee();
   })
 }
+// Generate engineer employee -------------------------------------------------------
 function engineerAsk(){
   inquirer.prompt(questions.engineerQuestions).then((answers) => {
-    
+    let name = answers.name;
+    let id = answers.id;
+    let email = answers.email;
+    let github = answers.github;
+
+    const engineer = new Engineer(name,id,email,github)
+
+    Team.push(engineer)
+    nextEmployee();
+
+  })
+}
+// Generate Intern Employee ----------------------------------------------------------
+function internAsk(){
+  inquirer.prompt(questions.internQuestions).then((answers) => {
+    let name = answers.name;
+    let id = answers.id;
+    let email = answers.email;
+    let school = answers.school;
+
+    const intern = new Intern(name,id,email,school)
+
+    Team.push(intern)
+    nextEmployee();
+
   })
 }
 
@@ -42,10 +66,22 @@ function engineerAsk(){
 
 
 function nextEmployee(){
-  inquirer.prompt(next).then((response) => {
-    
+  inquirer.prompt(questions.next).then((response) => {
+    switch (response.next) {
+      case 'Intern':
+        internAsk();
+        break;
+      case 'Engineer':
+        engineerAsk();
+        break;
+      case 'Completed':
+        console.log(` Creating HTML file displaying team`);
+        //teamMaker()
+    }
   })
 }
+
+
 
 
 startGetRole();

@@ -137,11 +137,12 @@ internQuestions : [
   },
 ],
 
-nextEmployee : [
+next : [
     {
         type:'list',
-        name: 'nextEmployee',
-        choices: ['Intern','Engineer','Finished']
+        name: 'next',
+        message: 'Who do you want to add next?',
+        choices: ['Intern','Engineer','Completed']
 
 
     }
