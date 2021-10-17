@@ -27,7 +27,7 @@
   * [Questions](#Questions)
 
   ## Installation
-  <code>copy the repo and being terminal in src folder and run 'node index' to begin questions </code>
+  <code>copy the repo and terminal in src folder and run 'node index' to begin questions </code>
   ## Usage
   <code>n/a</code>
   
