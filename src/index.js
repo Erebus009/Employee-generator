@@ -9,6 +9,7 @@ const { log } = require("console");
 const fs = require("fs");
 const path = require('path');
 const { Module } = require("module");
+const { generateKey } = require("crypto");
 // array to store team members in. 
 const Team = [];
 let manager
@@ -90,7 +91,10 @@ function nextEmployee(){
         managerInfo = managerInfo.replace('{{email}}', manager.getEmail());
         managerInfo = managerInfo.replace('{{officeNumber}}', manager.getOfficeNumber());
         var card = managerInfo;
-        
+        for(var i = 0; i < Team.length; i++){
+          var employee = Team[i];
+          card += generateTeam(employee)
+        }
         
         
        
@@ -106,6 +110,33 @@ function nextEmployee(){
 
 startGetRoles();
         
+function generateTeam(employee){
+
+  if(employee.getRole() === "Intern"){
+    var internInfo = fs.readFileSync('../templates/Intern.html', 'utf8')
+    internInfo = internInfo.replace('{{role}}', employee.getRole())
+    internInfo = internInfo.replace('{{name}}', employee.getName())
+    internInfo = internInfo.replace('{{id}}', employee.getId())
+    internInfo = internInfo.replace('{{email}}', employee.getEmail())
+    internInfo = internInfo.replace('{{school}}', employee.getSchool())
+    return internInfo;
+  } else if (employee.getRole() === "Engineer"){
+    var engineerInfo = fs.readFileSync('../templates/Engineer.html', 'utf8')
+    engineerInfo = engineerInfo.replace('{{role}}', employee.getRole())
+    engineerInfo = engineerInfo.replace('{{name}}', employee.getName())
+    engineerInfo = engineerInfo.replace('{{id}}', employee.getId())
+    engineerInfo = engineerInfo.replace('{{email}}', employee.getEmail())
+    engineerInfo = engineerInfo.replace('{{github}}', employee.getGithub())
+    console.log(engineerInfo);
+    return engineerInfo;
+  }
+
+
+
+
+}
+
+
 
         
         
