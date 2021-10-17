@@ -3,21 +3,36 @@
 }
 
 body {
-    background-color: rgb(196, 216, 221);
+    background-color: rgb(150, 209, 233);
 
 }
 .card-header {
     padding: 20px;
-    text-align: center;
     align-items: center;
     justify-content:center;
     
     
+    
 }
+h1{
+    margin-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+}
+h2{
+    font-weight: 700;
+    font-size: 3em;
+    text-decoration: underline;
+}
+
 .list{
     font-size: 18px;
     font-weight: 500;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
 }
 .box{
     max-width: 900px;
 }
+

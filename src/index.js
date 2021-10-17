@@ -127,7 +127,6 @@ function generateTeam(employee){
     engineerInfo = engineerInfo.replace('{{id}}', employee.getId())
     engineerInfo = engineerInfo.replace('{{email}}', employee.getEmail())
     engineerInfo = engineerInfo.replace('{{github}}', employee.getGithub())
-    console.log(engineerInfo);
     return engineerInfo;
   }
 
