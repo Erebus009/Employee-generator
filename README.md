@@ -2,7 +2,9 @@
    
   
   # Description
-  Taking data from inputs generates a html file showcasing an arrangement of inputted team members.
+  CLI app takes data from user inputs then generates a html file showcasing the arrangement of inputted team members.
+
+![image](https://user-images.githubusercontent.com/12164234/137612533-bfe9cbf9-52d1-43ba-a28f-d85ac92ea74f.png)
 
   
 
@@ -25,7 +27,7 @@
   * [Questions](#Questions)
 
   ## Installation
-  <code>npm install </code>
+  <code>copy the repo and being terminal in src folder and run 'node index' to begin questions </code>
   ## Usage
   <code>n/a</code>
   
