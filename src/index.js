@@ -6,30 +6,29 @@ const Intern = require("../lib/Intern");
 const questions = require('./questions')
 const inquirer = require("inquirer");
 const { log } = require("console");
-const generate = require("../lib/generate")
 const fs = require("fs");
-const path = require('path')
+const path = require('path');
+const { Module } = require("module");
 // array to store team members in. 
 const Team = [];
+let manager
 //--------------------------------------------
 //--------------------------------------------
 // Data to go into html files insaide dist folder.
-const exportPATH = path.resolve(__dirname, "dist")
-const export_dir = path.join(exportPATH, 'generated.html')
 
 
 
 // function to start collection of data to be used in populating the HTML file. 
-function startGetRole() {
+function startGetRoles() {
   inquirer.prompt(questions.managerQuestions).then((answers) => {
       let name = answers.name;
       let id = answers.id;
       let email = answers.email;
       let officeNumber = answers.officeNumber;
 
-      const manager = new Manager(name,id,email,officeNumber)
+      manager = new Manager(name,id,email,officeNumber)
 
-      Team.push(manager);
+      
 
 
       console.log(manager);
@@ -44,9 +43,9 @@ function engineerAsk(){
     let email = answers.email;
     let github = answers.github;
 
-    const engineer = new Engineer(name,id,email,github)
+    const employee = new Engineer(name,id,email,github)
 
-    Team.push(engineer)
+    Team.push(employee)
     nextEmployee();
 
   })
@@ -59,9 +58,9 @@ function internAsk(){
     let email = answers.email;
     let school = answers.school;
 
-    const intern = new Intern(name,id,email,school)
+    const employee = new Intern(name,id,email,school)
 
-    Team.push(intern)
+    Team.push(employee)
     nextEmployee();
 
   })
@@ -82,28 +81,37 @@ function nextEmployee(){
         break;
       case 'Completed':
         
-        console.log(` Creating HTML file displaying team`);
-        teamMaker()
+        var teamFile = fs.readFileSync('../templates/index.html', 'utf8')
+
+        var managerInfo = fs.readFileSync('../templates/Manager.html', 'utf8');
+        managerInfo = managerInfo.replace('{{role}}', manager.getRole());
+        managerInfo = managerInfo.replace('{{name}}', manager.getName());
+        managerInfo = managerInfo.replace('{{id}}', manager.getId());
+        managerInfo = managerInfo.replace('{{email}}', manager.getEmail());
+        managerInfo = managerInfo.replace('{{officeNumber}}', manager.getOfficeNumber());
+        var card = managerInfo;
+        
+        
+        
+       
+        teamFile = teamFile.replace('{{cards}}', card);
+        fs.writeFileSync('../dist/createdTeam.html', teamFile)
+        console.log('Team populated to html file.');
     }
   })
 }
 // writes data to html.
-function teamMaker(){
-  fs.writeFile(exportPATH, generate(Team), function(err){
-    if(err){
-      console.log(err);
-    }
-
-
-  
-  })
-}
-
-
-startGetRole();
 
 
 
+startGetRoles();
+        
+
+        
+        
+
+
+module.exports = Team;
 
 
 

@@ -1,3 +1,23 @@
 .main{
     height: 100px;
 }
+
+body {
+    background-color: rgb(196, 216, 221);
+
+}
+.card-header {
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content:center;
+    
+    
+}
+.list{
+    font-size: 18px;
+    font-weight: 500;
+}
+.box{
+    max-width: 900px;
+}
