@@ -27,7 +27,10 @@
   * [Questions](#Questions)
 
   ## Installation
-  <code>copy the repo and terminal in src folder and run 'node index' to begin questions </code>
+    git clone https://github.com/Erebus009/Employee-generator.git 
+    cd src   
+    node index
+   
   ## Usage
   <code>n/a</code>
   
