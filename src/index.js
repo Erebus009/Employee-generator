@@ -9,13 +9,12 @@ const { log } = require("console");
 const fs = require("fs");
 const path = require('path');
 const { Module } = require("module");
-const { generateKey } = require("crypto");
 // array to store team members in. 
 const Team = [];
 let manager
 //--------------------------------------------
 //--------------------------------------------
-// Data to go into html files insaide dist folder.
+// Data to go into html files insiide dist folder.
 
 
 
@@ -68,8 +67,7 @@ function internAsk(){
 }
 
 
-
-
+// When manager or another memployee prompt questions are finished uses a switch case to begin new questions or end them to generate the cards or each empolyee using a for loop. 
 
 function nextEmployee(){
   inquirer.prompt(questions.next).then((response) => {
@@ -81,7 +79,7 @@ function nextEmployee(){
         engineerAsk();
         break;
       case 'Completed':
-        
+        // makes the var teamfile equal the path to find index.html then decodes it into utf8
         var teamFile = fs.readFileSync('../templates/index.html', 'utf8')
 
         var managerInfo = fs.readFileSync('../templates/Manager.html', 'utf8');
@@ -109,7 +107,8 @@ function nextEmployee(){
 
 
 startGetRoles();
-        
+// using paramater of employee this replaces the macthing string in the html templates with the info entered through prompts for the correct role. 
+// With the for loop running this function for each object in the team array allowing this to be scaleable up to 20+ or more if the user wanted too.        
 function generateTeam(employee){
 
   if(employee.getRole() === "Intern"){
