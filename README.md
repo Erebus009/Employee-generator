@@ -32,7 +32,7 @@
     node index
    
   ## Usage
-      node index 
+    node index 
    to begin app.
   
   ## Tests
