@@ -5,9 +5,9 @@
   CLI app takes data from user inputs then generates a html file showcasing the arrangement of inputted team members.
   <br>
   <br>
-  ![Gif](https://media.giphy.com/media/dlDF10AZlumnDBP2Im/giphy.gif)
+  
 
-  ![image](https://user-images.githubusercontent.com/12164234/137612533-bfe9cbf9-52d1-43ba-a28f-d85ac92ea74f.png)
+  
 
 
   
@@ -19,6 +19,8 @@
   * [Installation](#Installation)
 
   * [Usage](#Usage)
+
+  * [Scrrenshots](#Screenshots)
 
   * [License](#License)
 
@@ -37,13 +39,15 @@
    
   ## Usage
     node index 
-   to begin app.
+
+   ![Gif](https://media.giphy.com/media/dlDF10AZlumnDBP2Im/giphy.gif)
   
   ## Tests
   <code>npm test </code>
   
   
-  
+  ## Screenshots
+![image](https://user-images.githubusercontent.com/12164234/137612533-bfe9cbf9-52d1-43ba-a28f-d85ac92ea74f.png)
   
   
   ## Contributors
