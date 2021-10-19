@@ -8,13 +8,14 @@ test('Success checks on the employee class', () => {
     })
 
     test('Success check of constructor arguments', () => {
-        const name = 'Travis'
+        const name = 'Hank'
         const id = '3'
-        const officeNumber = 'tp@gmail.com'
-        const employee = new Manager(name,id,officeNumber)
+        const officeNumber = '000903'
+        const email = "h@gmail.com"
+        const employee = new Manager(name,id,email,officeNumber)
         expect(employee.name).toBe(name)
         expect(employee.id).toBe(id)
-        expect(employee.email).toBe(officeNumber)
+        expect(employee.officeNumber).toBe(officeNumber)
     })
 
     test('getRole() should return role of Manager', () => {
