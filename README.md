@@ -32,10 +32,11 @@
     node index
    
   ## Usage
-  <code>n/a</code>
+      node index 
+   to begin app.
   
   ## Tests
-  <code>-npm test </code>
+  <code>npm test </code>
   
   
   
