@@ -9,14 +9,16 @@ test("Success checks on the employee class", () => {
 test('Success check of constructor arguments', () => {
   const name = 'Travis'
   const id = '3'
-  const school = 'school'
-  const employee = new Intern(name,id,school)
+  const school = 'UCLA'
+  const email = 'hello@gmail.com'
+  const employee = new Intern(name,id,email,school)
   expect(employee.name).toBe(name)
   expect(employee.id).toBe(id)
-  expect(employee.email).toBe(school)
+  expect(employee.email).toBe(email)
+  expect(employee.school).toBe('UCLA')
 })
 
-test('getRole() should return role of Manager', () => {
+test('getRole() should return role of Intern', () => {
   
   const i = new Intern('bob', 2, 'email','school');
   expect(i.getRole()).toBe('Intern');

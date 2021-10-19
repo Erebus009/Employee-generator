@@ -16,3 +16,9 @@ test('Success check of constructor arguments', () => {
     expect(employee.id).toBe(id)
     expect(employee.email).toBe(email)
 })
+
+test('getRole() should return role of Manager', () => {
+  
+    const e = new Employee('bob',2,'github');
+    expect(e.getRole()).toBe('Employee');
+    })
